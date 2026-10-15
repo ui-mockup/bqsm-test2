@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lembaga Juruukur Bahan Malaysia (LJBM) — Portal Rasmi</title>
+<meta name="description" content="Portal Rasmi Lembaga Juruukur Bahan Malaysia (LJBM), badan berkanun di bawah Kementerian Kerja Raya yang ditubuhkan di bawah Akta Juruukur Bahan 1967.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+/* =========================================================
+   WARNA KORPORAT — tukar di sini sahaja
+   ========================================================= */
+:root{
+  --blue-900:#061A3F;
+  --blue-800:#0A2A66;   /* biru korporat utama */
+  --blue-700:#123B86;
+  --blue-500:#2F64C8;
+  --blue-50:#EEF3FC;
+  --yellow-500:#FFC20E; /* kuning korporat utama */
+  --yellow-600:#E5A800;
+  --yellow-100:#FFF4D1;
+  --ink:#0F1B33;
+  --muted:#5B6782;
+  --line:#E3E8F2;
+  --bg:#F6F8FC;
+  --white:#FFFFFF;
+  --radius:16px;
+  --shadow:0 10px 30px rgba(10,42,102,.10);
+  --container:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:var(--white);line-height:1.6;font-size:16px}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.container{max-width:var(--container);margin:0 auto;padding:0 24px}
+.icon{width:20px;height:20px;stroke-width:2}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-700)}
+.eyebrow::before{content:"";width:28px;height:3px;border-radius:3px;background:var(--yellow-500)}
+.section{padding:88px 0}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+.section-head h2{font-size:clamp(28px,3.2vw,38px);line-height:1.2;font-weight:800;margin-top:10px;color:var(--blue-900)}
+.section-head p{color:var(--muted);max-width:560px;margin-top:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:700;font-size:15px;transition:.2s}
+.btn-yellow{background:var(--yellow-500);color:var(--blue-900)}
+.btn-yellow:hover{background:var(--yellow-600)}
+.btn-outline{border:1.5px solid var(--blue-800);color:var(--blue-800)}
+.btn-outline:hover{background:var(--blue-800);color:#fff}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.5);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.link-arrow{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--blue-800);font-size:15px}
+.link-arrow:hover{gap:10px}
+
+/* ================= HEADER (ikut gaya LKIM) ================= */
+.topbar{background:var(--white);border-bottom:1px solid var(--line)}
+.topbar .container{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:14px;padding-bottom:14px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img.jata{height:54px;width:auto}
+.brand img.logo{height:58px;width:auto}
+.brand .divider{width:1px;height:44px;background:var(--line)}
+.brand-text small{display:block;font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.04em}
+.brand-text strong{display:block;font-size:19px;line-height:1.2;color:var(--blue-900);font-weight:800}
+.brand-text span{display:block;font-size:12.5px;color:var(--blue-700);font-weight:600}
+.top-tools{display:flex;align-items:center;gap:6px}
+.tool{display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 12px;border-radius:12px;font-size:11.5px;font-weight:600;color:var(--muted)}
+.tool .ic{width:38px;height:38px;border-radius:50%;background:var(--blue-50);display:grid;place-items:center;color:var(--blue-800);transition:.2s}
+.tool:hover .ic{background:var(--yellow-500);color:var(--blue-900)}
+.lang{display:flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;margin-left:10px}
+.lang a{padding:7px 13px;font-size:13px;font-weight:700;color:var(--muted)}
+.lang a.active{background:var(--blue-800);color:#fff}
+
+.navbar{background:var(--blue-800);position:sticky;top:0;z-index:50;box-shadow:0 4px 18px rgba(6,26,63,.18)}
+.navbar .container{display:flex;align-items:center;justify-content:space-between}
+.menu{display:flex}
+.menu>li{position:relative}
+.menu>li>a{display:flex;align-items:center;gap:6px;padding:18px 18px;color:#fff;font-weight:600;font-size:14.5px;border-bottom:3px solid transparent}
+.menu>li>a .icon{width:16px;height:16px;opacity:.7}
+.menu>li:hover>a,.menu>li>a.active{border-bottom-color:var(--yellow-500);background:rgba(255,255,255,.06)}
+.mega{position:absolute;top:100%;left:0;min-width:520px;background:#fff;border-radius:0 0 var(--radius) var(--radius);box-shadow:var(--shadow);padding:24px;display:grid;grid-template-columns:repeat(2,1fr);gap:24px;opacity:0;visibility:hidden;transform:translateY(8px);transition:.2s;border-top:3px solid var(--yellow-500)}
+.mega.single{min-width:280px;grid-template-columns:1fr}
+.menu>li:hover .mega{opacity:1;visibility:visible;transform:none}
+.mega h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-700);margin-bottom:10px}
+.mega a{display:block;padding:7px 0;font-size:14.5px;color:var(--ink);font-weight:500}
+.mega a:hover{color:var(--blue-700);padding-left:4px}
+.nav-right{display:flex;align-items:center;gap:10px}
+.search-btn{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;background:rgba(255,255,255,.1)}
+.reqsys{display:inline-flex;align-items:center;gap:8px;background:var(--yellow-500);color:var(--blue-900);font-weight:800;font-size:14px;padding:10px 18px;border-radius:999px}
+.burger{display:none;color:#fff;background:none;border:0;padding:14px 0;cursor:pointer}
+
+/* ================= HERO ================= */
+.hero{position:relative;min-height:620px;display:flex;align-items:center;color:#fff;overflow:hidden;background:var(--blue-900)}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,26,63,.95) 0%,rgba(10,42,102,.78) 45%,rgba(10,42,102,.25) 100%)}
+.hero .container{position:relative;z-index:2;width:100%;padding-top:70px;padding-bottom:150px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,194,14,.15);border:1px solid rgba(255,194,14,.5);color:var(--yellow-500);padding:7px 14px;border-radius:999px;font-size:13px;font-weight:700}
+.hero h1{font-size:clamp(34px,4.6vw,58px);line-height:1.1;font-weight:800;max-width:720px;margin:20px 0 18px}
+.hero h1 em{font-style:normal;color:var(--yellow-500)}
+.hero p{max-width:580px;font-size:17px;color:rgba(255,255,255,.85);margin-bottom:30px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+.audience{position:relative;z-index:5;margin-top:-90px}
+.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.aud-card{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);display:flex;gap:16px;align-items:flex-start;border-bottom:4px solid transparent;transition:.25s}
+.aud-card:hover{transform:translateY(-4px);border-bottom-color:var(--yellow-500)}
+.aud-card .ic{flex:none;width:52px;height:52px;border-radius:14px;background:var(--blue-800);color:var(--yellow-500);display:grid;place-items:center}
+.aud-card .ic .icon{width:24px;height:24px}
+.aud-card h3{font-size:17px;font-weight:800;color:var(--blue-900)}
+.aud-card p{font-size:14px;color:var(--muted);margin-top:2px}
+
+/* Ticker */
+.ticker{margin-top:28px;background:var(--yellow-100);border:1px solid #F5DE95;border-radius:999px;display:flex;align-items:center;overflow:hidden}
+.ticker-label{flex:none;display:flex;align-items:center;gap:8px;background:var(--yellow-500);color:var(--blue-900);font-weight:800;font-size:13px;padding:12px 20px;border-radius:999px}
+.ticker-track{overflow:hidden;flex:1}
+.ticker-track div{display:inline-flex;gap:48px;white-space:nowrap;padding-left:24px;font-size:14px;font-weight:600;color:var(--blue-900);animation:marquee 35s linear infinite}
+.ticker-track span::before{content:"●";color:var(--yellow-600);margin-right:10px;font-size:10px;vertical-align:middle}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ================= PERKHIDMATAN ================= */
+.services-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.svc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 18px;text-align:center;transition:.25s}
+.svc:hover{border-color:var(--blue-800);box-shadow:var(--shadow);transform:translateY(-4px)}
+.svc .ic{width:62px;height:62px;margin:0 auto 14px;border-radius:50%;background:var(--blue-50);color:var(--blue-800);display:grid;place-items:center;transition:.25s}
+.svc:hover .ic{background:var(--yellow-500);color:var(--blue-900)}
+.svc .ic .icon{width:28px;height:28px}
+.svc h3{font-size:15.5px;font-weight:700;color:var(--blue-900)}
+.svc p{font-size:13px;color:var(--muted);margin-top:4px}
+
+/* ================= TENTANG ================= */
+.about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center}
+.about-media{position:relative}
+.about-media .main{border-radius:24px;aspect-ratio:4/3.4;object-fit:cover;width:100%}
+.about-media .float{position:absolute;right:-24px;bottom:-30px;width:46%;border-radius:18px;border:6px solid #fff;box-shadow:var(--shadow);aspect-ratio:1;object-fit:cover}
+.about-badge{position:absolute;left:-18px;top:28px;background:var(--yellow-500);color:var(--blue-900);border-radius:16px;padding:16px 20px;box-shadow:var(--shadow)}
+.about-badge strong{display:block;font-size:30px;line-height:1;font-weight:800}
+.about-badge span{font-size:12.5px;font-weight:700}
+.about h2{font-size:clamp(28px,3.2vw,38px);font-weight:800;line-height:1.2;color:var(--blue-900);margin:10px 0 18px}
+.about p{color:var(--muted);margin-bottom:16px}
+.vm{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:26px 0 30px}
+.vm div{background:#fff;border-radius:14px;padding:18px;border-left:4px solid var(--yellow-500)}
+.vm h4{display:flex;align-items:center;gap:8px;color:var(--blue-800);font-size:15px;margin-bottom:6px}
+.vm p{font-size:14px;margin:0}
+
+/* ================= LALUAN PENDAFTARAN ================= */
+.path{background:var(--blue-900);color:#fff;position:relative;overflow:hidden}
+.path::before{content:"";position:absolute;right:-160px;top:-160px;width:480px;height:480px;border-radius:50%;border:70px solid rgba(255,194,14,.08)}
+.path .section-head h2{color:#fff}
+.path .section-head p{color:rgba(255,255,255,.7)}
+.path .eyebrow{color:var(--yellow-500)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.step{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:28px 24px;position:relative}
+.step .num{position:absolute;top:20px;right:22px;font-size:40px;font-weight:800;color:rgba(255,194,14,.25);line-height:1}
+.step .ic{width:52px;height:52px;border-radius:14px;background:var(--yellow-500);color:var(--blue-900);display:grid;place-items:center;margin-bottom:18px}
+.step h3{font-size:17px;font-weight:700;margin-bottom:6px}
+.step p{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:14px}
+.step a{font-size:14px;font-weight:700;color:var(--yellow-500);display:inline-flex;gap:6px;align-items:center}
+
+/* ================= PENGUMUMAN ================= */
+.news-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
+.news-feature{position:relative;border-radius:20px;overflow:hidden;min-height:440px;display:flex;align-items:flex-end;color:#fff}
+.news-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.news-feature::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(6,26,63,.95))}
+.news-feature .body{position:relative;z-index:2;padding:32px}
+.tag{display:inline-block;font-size:12px;font-weight:800;padding:5px 12px;border-radius:999px;background:var(--yellow-500);color:var(--blue-900);text-transform:uppercase;letter-spacing:.04em}
+.tag.blue{background:var(--blue-50);color:var(--blue-800)}
+.news-feature h3{font-size:24px;line-height:1.3;margin:14px 0 10px;font-weight:800}
+.meta{display:flex;align-items:center;gap:6px;font-size:13px;opacity:.8}
+.news-list{display:flex;flex-direction:column;gap:16px}
+.news-item{display:flex;gap:16px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;transition:.2s}
+.news-item:hover{box-shadow:var(--shadow);border-color:transparent}
+.news-item img{width:110px;height:96px;border-radius:12px;object-fit:cover;flex:none}
+.news-item h4{font-size:15px;line-height:1.4;font-weight:700;color:var(--blue-900);margin:6px 0}
+.news-item .meta{color:var(--muted);opacity:1}
+
+/* ================= PROGRAM ================= */
+.programs{background:var(--bg)}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.prog{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 2px 0 var(--line);transition:.25s}
+.prog:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
+.prog .img{position:relative;aspect-ratio:16/10}
+.prog .img img{width:100%;height:100%;object-fit:cover}
+.prog .acr{position:absolute;left:20px;bottom:-22px;background:var(--blue-800);color:var(--yellow-500);font-weight:800;font-size:20px;padding:10px 18px;border-radius:12px;border:4px solid #fff}
+.prog .body{padding:38px 24px 26px}
+.prog h3{font-size:18px;font-weight:800;color:var(--blue-900)}
+.prog p{font-size:14.5px;color:var(--muted);margin:8px 0 16px}
+
+/* ================= PENERBITAN QS-LINK ================= */
+.pub-wrap{display:grid;grid-template-columns:360px 1fr;gap:32px;align-items:stretch}
+.pub-cover{background:linear-gradient(160deg,var(--blue-800),var(--blue-900));border-radius:22px;padding:34px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.pub-cover::after{content:"";position:absolute;right:-60px;bottom:-60px;width:220px;height:220px;border-radius:50%;background:var(--yellow-500);opacity:.18}
+.pub-cover .badge{font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--yellow-500)}
+.pub-cover h3{font-size:36px;font-weight:800;line-height:1.1;margin:12px 0}
+.pub-cover p{color:rgba(255,255,255,.75);font-size:15px}
+.pub-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.pub-item{display:flex;gap:14px;align-items:flex-start;padding:18px;border:1px solid var(--line);border-radius:14px;transition:.2s}
+.pub-item:hover{background:var(--blue-50);border-color:var(--blue-50)}
+.pub-item .n{flex:none;width:36px;height:36px;border-radius:10px;background:var(--yellow-100);color:var(--blue-800);font-weight:800;display:grid;place-items:center;font-size:14px}
+.pub-item h4{font-size:14.5px;line-height:1.4;font-weight:700;color:var(--blue-900)}
+.pub-item span{font-size:12.5px;color:var(--muted)}
+
+/* ================= RUJUKAN PANTAS ================= */
+.refs{background:var(--yellow-500)}
+.refs .container{display:grid;grid-template-columns:1fr 2fr;gap:40px;align-items:center;padding-top:56px;padding-bottom:56px}
+.refs h2{font-size:30px;font-weight:800;color:var(--blue-900);line-height:1.2}
+.refs p{color:var(--blue-900);opacity:.75;margin-top:8px}
+.ref-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ref{display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:16px 18px;font-weight:700;font-size:14.5px;color:var(--blue-900);transition:.2s}
+.ref:hover{background:var(--blue-900);color:#fff}
+.ref .icon{color:var(--blue-700)}
+.ref:hover .icon{color:var(--yellow-500)}
+
+/* ================= PAUTAN LUAR ================= */
+.partners{padding:64px 0;border-bottom:1px solid var(--line)}
+.partners h3{text-align:center;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:28px}
+.logo-track{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.logo-track div{display:flex;gap:56px;width:max-content;animation:marquee 40s linear infinite;align-items:center}
+.logo-track img{height:56px;width:auto;filter:grayscale(1);opacity:.7;transition:.2s}
+.logo-track img:hover{filter:none;opacity:1}
+
+/* ================= FOOTER ================= */
+footer{background:var(--blue-900);color:rgba(255,255,255,.75);padding-top:72px}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:40px;padding-bottom:48px}
+.foot-brand{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.foot-brand img{height:56px;background:#fff;border-radius:12px;padding:6px}
+.foot-brand strong{color:#fff;font-size:17px;line-height:1.3}
+footer h4{color:#fff;font-size:16px;margin-bottom:18px;position:relative;padding-bottom:10px}
+footer h4::after{content:"";position:absolute;left:0;bottom:0;width:32px;height:3px;border-radius:3px;background:var(--yellow-500)}
+.contact li{display:flex;gap:10px;margin-bottom:12px;font-size:14.5px}
+.contact .icon{color:var(--yellow-500);flex:none;width:18px;height:18px;margin-top:3px}
+.foot-links a{display:block;padding:5px 0;font-size:14.5px}
+.foot-links a:hover{color:var(--yellow-500)}
+.social{display:flex;gap:10px;margin-top:20px}
+.social a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;color:#fff;transition:.2s}
+.social a:hover{background:var(--yellow-500);color:var(--blue-900)}
+.visitors{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.visitors div{background:rgba(255,255,255,.06);border-radius:12px;padding:12px}
+.visitors strong{display:block;color:#fff;font-size:18px}
+.visitors span{font-size:12px}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding:22px 0;font-size:13.5px}
+.foot-bottom .container{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot-bottom nav{display:flex;gap:20px;flex-wrap:wrap}
+.foot-bottom a:hover{color:var(--yellow-500)}
+
+/* ================= RESPONSIF ================= */
+@media (max-width:1100px){
+  .menu>li>a{padding:18px 12px;font-size:13.5px}
+  .services-grid{grid-template-columns:repeat(3,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .top-tools .tool{display:none}
+  .menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--blue-800);flex-direction:column;padding:8px 24px 20px}
+  .menu.open{display:flex}
+  .mega{display:none}
+  .burger{display:block}
+  .nav-right .reqsys span{display:none}
+  .audience-grid,.prog-grid,.news-grid,.about-grid,.pub-wrap,.refs .container{grid-template-columns:1fr}
+  .about-media .float{right:10px}
+  .ref-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:600px){
+  .container{padding:0 16px}
+  .brand .divider,.brand img.jata{display:none}
+  .brand-text strong{font-size:16px}
+  .section{padding:64px 0}
+  .services-grid,.steps,.pub-list,.vm,.foot-grid{grid-template-columns:1fr 1fr}
+  .steps,.pub-list,.vm,.foot-grid{grid-template-columns:1fr}
+  .ref-grid{grid-template-columns:1fr}
+  .ticker-label span{display:none}
+  .news-item img{width:86px;height:80px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= TOP BAR / HEADER ================= -->
+<header class="topbar">
+  <div class="container">
+    <a href="#" class="brand">
+      <img class="jata" src="https://www.bqsm.gov.my/wp-content/uploads/2023/02/1397px-JATA_NEGARA_MALAYSIA-2-1-1024x792.png" alt="Jata Negara Malaysia">
+      <span class="divider"></span>
+      <img class="logo" src="https://www.bqsm.gov.my/wp-content/uploads/2022/06/cropped-logo_LJBM.png" alt="Logo LJBM">
+      <div class="brand-text">
+        <small>PORTAL RASMI</small>
+        <strong>Lembaga Juruukur Bahan Malaysia</strong>
+        <span>Kementerian Kerja Raya</span>
+      </div>
+    </a>
+    <div class="top-tools">
+      <a class="tool" href="https://www.bqsm.gov.my/soalan-lazim/"><span class="ic"><i data-lucide="circle-help" class="icon"></i></span>Soalan Lazim</a>
+      <a class="tool" href="https://www.bqsm.gov.my/maklumat-perhubungan/"><span class="ic"><i data-lucide="phone" class="icon"></i></span>Hubungi</a>
+      <a class="tool" href="https://www.bqsm.gov.my/meja-bantuan/"><span class="ic"><i data-lucide="headset" class="icon"></i></span>Meja Bantuan</a>
+      <a class="tool" href="https://www.bqsm.gov.my/peta-laman/"><span class="ic"><i data-lucide="map" class="icon"></i></span>Peta Laman</a>
+      <!-- Ruang untuk butang Alat Kebolehcapaian (akan ditambah kemudian) -->
+      <div class="lang"><a href="#" class="active">BM</a><a href="https://www.bqsm.gov.my/en/">EN</a></div>
+    </div>
+  </div>
+</header>
+
+<nav class="navbar">
+  <div class="container">
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.menu').classList.toggle('open')"><i data-lucide="menu"></i></button>
+    <ul class="menu">
+      <li><a href="#" class="active">Utama</a></li>
+      <li><a href="#">Info Korporat <i data-lucide="chevron-down" class="icon"></i></a>
+        <div class="mega">
+          <div><h4>Profil</h4><a href="https://www.bqsm.gov.my/tentang-ljbm/">Tentang LJBM</a><a href="https://www.bqsm.gov.my/akta-juruukur-bahan/">Akta Juruukur Bahan 1967</a></div>
+          <div><h4>Tadbir Urus Korporat</h4><a href="https://www.bqsm.gov.my/organisasi-ahli-lembaga/">Organisasi &amp; Ahli Lembaga</a><a href="https://www.bqsm.gov.my/jawatankuasa/">Jawatankuasa</a></div>
+        </div>
+      </li>
+      <li><a href="#">Awam <i data-lucide="chevron-down" class="icon"></i></a>
+        <div class="mega">
+          <div><h4>Maklumat Awam</h4><a href="https://www.bqsm.gov.my/keahlian/">Keahlian</a><a href="https://www.bqsm.gov.my/tender-sebut-harga/">Tender / Sebut Harga</a><a href="https://www.bqsm.gov.my/kerjaya/">Kerjaya</a></div>
+          <div><h4>Program</h4><a href="https://www.bqsm.gov.my/program_diiktiraf/">Program Diiktiraf</a><a href="https://www.bqsm.gov.my/program-qsic/">Program QSIC</a><a href="https://www.bqsm.gov.my/program-pqrs/">Program PQRS</a><a href="https://www.bqsm.gov.my/program-cpd/">Program CPD</a></div>
+        </div>
+      </li>
+      <li><a href="#">Perkhidmatan Pendaftaran <i data-lucide="chevron-down" class="icon"></i></a>
+        <div class="mega">
+          <div><h4>Individu</h4><a href="https://www.bqsm.gov.my/pendaftaran-apc/">Pendaftaran APC</a><a href="https://www.bqsm.gov.my/pendaftaran-baharu/">Pendaftaran Baharu</a><a href="https://www.bqsm.gov.my/pembaharuan-pendaftaran/">Pembaharuan Pendaftaran</a><a href="https://www.bqsm.gov.my/pemasukan-semula/">Pemasukan Semula</a><a href="https://www.bqsm.gov.my/pendaftaran-semula/">Pendaftaran Semula</a></div>
+          <div><h4>Firma &amp; Peperiksaan</h4><a href="https://www.bqsm.gov.my/syarikat-firma-perunding-ukur-bahan/">Syarikat / Firma Perunding Ukur Bahan</a><a href="https://www.bqsm.gov.my/pendaftaran-peperiksaan/">Pendaftaran Peperiksaan</a></div>
+        </div>
+      </li>
+      <li><a href="#">Pusat Info <i data-lucide="chevron-down" class="icon"></i></a>
+        <div class="mega">
+          <div><h4>Media</h4><a href="https://www.bqsm.gov.my/pengumuman/">Pengumuman</a><a href="https://www.bqsm.gov.my/penerbitan/">Penerbitan</a><a href="https://www.bqsm.gov.my/galeri/">Galeri</a></div>
+          <div><h4>Rujukan</h4><a href="https://www.bqsm.gov.my/akta-juruukur-bahan/">Akta Juruukur Bahan</a><a href="https://www.bqsm.gov.my/pekeliling/">Pekeliling</a><a href="https://www.bqsm.gov.my/garis-panduan/">Garis Panduan</a><a href="https://www.bqsm.gov.my/sof/">SOF</a><a href="https://www.bqsm.gov.my/akreditasi/senarai-akreditasi-program-profesional/">Akreditasi</a><a href="https://www.bqsm.gov.my/borang-berkaitan/">Borang Berkaitan</a></div>
+        </div>
+      </li>
+      <li><a href="#">Hubungi Kami <i data-lucide="chevron-down" class="icon"></i></a>
+        <div class="mega single">
+          <div><h4>Perhubungan</h4><a href="https://www.bqsm.gov.my/maklumat-perhubungan/">Maklumat Perhubungan</a><a href="https://www.bqsm.gov.my/direktori-kakitangan/">Direktori Kakitangan</a></div>
+        </div>
+      </li>
+    </ul>
+    <div class="nav-right">
+      <a href="#" class="search-btn" aria-label="Cari"><i data-lucide="search" class="icon"></i></a>
+      <a href="https://reqsys.bqsm.gov.my/reqsys/t/public/login" class="reqsys"><i data-lucide="log-in" class="icon"></i><span>Log Masuk ReQSys</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <img class="hero-bg" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80" alt="Bangunan pencakar langit">
+  <div class="container">
+    <span class="hero-tag"><i data-lucide="shield-check" class="icon"></i> Badan Berkanun di bawah Akta Juruukur Bahan 1967</span>
+    <h1>Memperkasa Profesion <em>Ukur Bahan</em> Malaysia</h1>
+    <p>LJBM mengawal selia pendaftaran, amalan dan kompetensi juruukur bahan serta firma perunding demi industri pembinaan yang telus, beretika dan bernilai.</p>
+    <div class="hero-actions">
+      <a href="https://reqsys.bqsm.gov.my/reqsys/t/public/login" class="btn btn-yellow"><i data-lucide="user-plus" class="icon"></i> Daftar / Log Masuk ReQSys</a>
+      <a href="https://www.bqsm.gov.my/tentang-ljbm/" class="btn btn-ghost">Kenali LJBM <i data-lucide="arrow-right" class="icon"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- Kad audiens + ticker -->
+<section class="audience">
+  <div class="container">
+    <div class="audience-grid">
+      <a href="#" class="aud-card"><span class="ic"><i data-lucide="users" class="icon"></i></span><div><h3>Orang Awam</h3><p>Semak juruukur bahan berdaftar, aduan &amp; maklumat am.</p></div></a>
+      <a href="#" class="aud-card"><span class="ic"><i data-lucide="hard-hat" class="icon"></i></span><div><h3>Juruukur Bahan</h3><p>Pendaftaran, APC, CPD dan pembaharuan keahlian.</p></div></a>
+      <a href="#" class="aud-card"><span class="ic"><i data-lucide="building-2" class="icon"></i></span><div><h3>Firma &amp; IPT</h3><p>Pendaftaran firma perunding dan akreditasi program.</p></div></a>
+    </div>
+    <div class="ticker">
+      <span class="ticker-label"><i data-lucide="megaphone" class="icon"></i><span>PENGUMUMAN</span></span>
+      <div class="ticker-track"><div>
+        <span>Hebahan Hari Profesion Teknikal Negara 2026</span>
+        <span>Kenyataan Tawaran Sebut Harga LJBM/DSH05/2026</span>
+        <span>Notis Larangan Individu Tidak Berdaftar Sebagai Juruukur Bahan</span>
+        <span>Program CPD: AI in Dispute Management for the Construction Industry — 19 Oktober 2026</span>
+        <span>Hebahan Hari Profesion Teknikal Negara 2026</span>
+        <span>Kenyataan Tawaran Sebut Harga LJBM/DSH05/2026</span>
+        <span>Notis Larangan Individu Tidak Berdaftar Sebagai Juruukur Bahan</span>
+        <span>Program CPD: AI in Dispute Management for the Construction Industry — 19 Oktober 2026</span>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PERKHIDMATAN DALAM TALIAN ================= -->
+<section class="section" id="perkhidmatan">
+  <div class="container">
+    <div class="section-head">
+      <div><span class="eyebrow">Perkhidmatan</span><h2>Perkhidmatan Dalam Talian</h2><p>Akses pantas kepada perkhidmatan dalam talian LJBM melalui sistem ReQSys.</p></div>
+      <a href="#" class="link-arrow">Lihat Semua <i data-lucide="arrow-right" class="icon"></i></a>
+    </div>
+    <div class="services-grid">
+      <a href="https://reqsys.bqsm.gov.my/reqsys/t/public/login" class="svc"><div class="ic"><i data-lucide="badge-check" class="icon"></i></div><h3>MyAPC</h3><p>Penilaian Kompetensi Profesional</p></a>
+      <a href="https://reqsys.bqsm.gov.my/reqsys/t/public/login" class="svc"><div class="ic"><i data-lucide="id-card" class="icon"></i></div><h3>Pendaftaran Ahli</h3><p>Daftar &amp; perbaharui keahlian</p></a>
+      <a href="https://reqsys.bqsm.gov.my/reqsys/t/public/login" class="svc"><div class="ic"><i data-lucide="briefcase-business" class="icon"></i></div><h3>Pendaftaran Firma</h3><p>Firma perunding ukur bahan</p></a>
+      <a href="https://reqsys.bqsm.gov.my/reqsys/t/public/login" class="svc"><div class="ic"><i data-lucide="graduation-cap" class="icon"></i></div><h3>IHL</h3><p>Institusi pengajian tinggi</p></a>
+      <a href="https://reqsys.bqsm.gov.my/reqsys/t/public/login" class="svc"><div class="ic"><i data-lucide="presentation" class="icon"></i></div><h3>Penganjur Luar CPD</h3><p>Permohonan program CPD</p></a>
+      <a href="https://reqsys.bqsm.gov.my/reqsys/t/public/login" class="svc"><div class="ic"><i data-lucide="file-pen-line" class="icon"></i></div><h3>Peperiksaan Tier II</h3><p>Pendaftaran peperiksaan</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TENTANG LJBM ================= -->
+<section class="section about">
+  <div class="container about-grid">
+    <div class="about-media">
+      <img class="main" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80" alt="Pelan seni bina dan pengukuran">
+      <img class="float" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=700&q=80" alt="Tapak pembinaan">
+      <div class="about-badge"><strong>1967</strong><span>Akta Juruukur Bahan</span></div>
+    </div>
+    <div>
+      <span class="eyebrow">Tentang LJBM</span>
+      <h2>Pengawal Selia Profesion Ukur Bahan Negara</h2>
+      <p>Lembaga Juruukur Bahan Malaysia (LJBM) adalah salah satu agensi badan berkanun di bawah Kementerian Kerja Raya (KKR), ditubuhkan di bawah Akta Parlimen iaitu Akta Juruukur Bahan 1967.</p>
+      <p>LJBM bertanggungjawab ke atas pendaftaran juruukur bahan dan firma perunding, akreditasi program pengajian serta pembangunan profesional berterusan ahli.</p>
+      <div class="vm">
+        <div><h4><i data-lucide="eye" class="icon"></i> Visi</h4><p>Teks visi LJBM — sila kemas kini.</p></div>
+        <div><h4><i data-lucide="target" class="icon"></i> Misi</h4><p>Teks misi LJBM — sila kemas kini.</p></div>
+      </div>
+      <a href="https://www.bqsm.gov.my/tentang-ljbm/" class="btn btn-outline">Baca Lanjut <i data-lucide="arrow-right" class="icon"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LALUAN PENDAFTARAN ================= -->
+<section class="section path">
+  <div class="container">
+    <div class="section-head">
+      <div><span class="eyebrow">Perkhidmatan Pendaftaran</span><h2>Laluan Menjadi Juruukur Bahan Berdaftar</h2><p>Panduan ringkas langkah pendaftaran bersama LJBM.</p></div>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="num">01</span><div class="ic"><i data-lucide="school" class="icon"></i></div><h3>Program Diiktiraf</h3><p>Lengkapkan pengajian dalam program ukur bahan yang diakreditasi LJBM.</p><a href="https://www.bqsm.gov.my/program_diiktiraf/">Senarai Program <i data-lucide="arrow-right" class="icon"></i></a></div>
+      <div class="step"><span class="num">02</span><div class="ic"><i data-lucide="user-round-plus" class="icon"></i></div><h3>Pendaftaran Baharu</h3><p>Daftar sebagai juruukur bahan siswazah melalui sistem ReQSys.</p><a href="https://www.bqsm.gov.my/pendaftaran-baharu/">Daftar <i data-lucide="arrow-right" class="icon"></i></a></div>
+      <div class="step"><span class="num">03</span><div class="ic"><i data-lucide="clipboard-check" class="icon"></i></div><h3>Penilaian APC</h3><p>Jalani Assessment of Professional Competence (APC) untuk status profesional.</p><a href="https://www.bqsm.gov.my/pendaftaran-apc/">Maklumat APC <i data-lucide="arrow-right" class="icon"></i></a></div>
+      <div class="step"><span class="num">04</span><div class="ic"><i data-lucide="award" class="icon"></i></div><h3>CPD &amp; Pembaharuan</h3><p>Kekalkan kompetensi melalui CPD dan perbaharui pendaftaran setiap tahun.</p><a href="https://www.bqsm.gov.my/pembaharuan-pendaftaran/">Perbaharui <i data-lucide="arrow-right" class="icon"></i></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PENGUMUMAN ================= -->
+<section class="section" id="pengumuman">
+  <div class="container">
+    <div class="section-head">
+      <div><span class="eyebrow">Terkini</span><h2>Pengumuman &amp; Berita</h2><p>Ikuti perkembangan terbaharu program, tender dan hebahan LJBM.</p></div>
+      <a href="https://www.bqsm.gov.my/pengumuman/" class="link-arrow">Lihat Semua <i data-lucide="arrow-right" class="icon"></i></a>
+    </div>
+    <div class="news-grid">
+      <a href="https://www.bqsm.gov.my/pengumumans/hebahan-hari-profesion-teknikal-negara-2026/" class="news-feature">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1400&q=80" alt="Majlis profesional">
+        <div class="body">
+          <span class="tag">Hebahan</span>
+          <h3>Hebahan Hari Profesion Teknikal Negara 2026</h3>
+          <div class="meta"><i data-lucide="calendar" class="icon"></i> September 2026</div>
+        </div>
+      </a>
+      <div class="news-list">
+        <a href="https://www.bqsm.gov.my/pengumumans/ai-in-dispute-management-for-the-construction-industry-integrating-law-adr-and-technology-19-10-2026/" class="news-item">
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=400&q=80" alt="Kecerdasan buatan">
+          <div><span class="tag blue">Program CPD</span><h4>AI in Dispute Management for the Construction Industry</h4><div class="meta"><i data-lucide="calendar" class="icon"></i> 19 Oktober 2026</div></div>
+        </a>
+        <a href="https://www.bqsm.gov.my/pengumumans/kenyataan-tawaran-sebut-harga-ljbm-dsh05-2026/" class="news-item">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80" alt="Dokumen sebut harga">
+          <div><span class="tag blue">Sebut Harga</span><h4>Kenyataan Tawaran Sebut Harga LJBM/DSH05/2026</h4><div class="meta"><i data-lucide="calendar" class="icon"></i> September 2026</div></div>
+        </a>
+        <a href="https://www.bqsm.gov.my/pengumumans/bengkel-penyediaan-laporan-analisis-kritikal-siri-2-2026/" class="news-item">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400&q=80" alt="Bengkel">
+          <div><span class="tag blue">Bengkel</span><h4>Bengkel Penyediaan Laporan Analisis Kritikal Siri 2 2026</h4><div class="meta"><i data-lucide="calendar" class="icon"></i> Ogos 2026</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROGRAM ================= -->
+<section class="section programs">
+  <div class="container">
+    <div class="section-head">
+      <div><span class="eyebrow">Program</span><h2>Program Utama LJBM</h2><p>Membangunkan kompetensi dan jaringan profesional juruukur bahan.</p></div>
+    </div>
+    <div class="prog-grid">
+      <div class="prog">
+        <div class="img"><img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=900&q=80" alt="Konvensyen"><span class="acr">QSIC</span></div>
+        <div class="body"><h3>Quantity Surveying International Convention</h3><p>Konvensyen antarabangsa yang menghimpunkan pengamal, ahli akademik dan industri ukur bahan.</p><a href="https://www.bqsm.gov.my/program-qsic/" class="link-arrow">Ketahui Lanjut <i data-lucide="arrow-right" class="icon"></i></a></div>
+      </div>
+      <div class="prog">
+        <div class="img"><img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=900&q=80" alt="Profesional di tapak"><span class="acr">PQRS</span></div>
+        <div class="body"><h3>Programme for QS Registration Scheme</h3><p>Skim yang membimbing juruukur bahan siswazah ke arah pendaftaran profesional.</p><a href="https://www.bqsm.gov.my/program-pqrs/" class="link-arrow">Ketahui Lanjut <i data-lucide="arrow-right" class="icon"></i></a></div>
+      </div>
+      <div class="prog">
+        <div class="img"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80" alt="Latihan"><span class="acr">CPD</span></div>
+        <div class="body"><h3>Pembangunan Profesional Berterusan</h3><p>Kursus, seminar dan bengkel bagi memastikan ahli sentiasa kompeten dan relevan.</p><a href="https://www.bqsm.gov.my/program-cpd/" class="link-arrow">Ketahui Lanjut <i data-lucide="arrow-right" class="icon"></i></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PENERBITAN ================= -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div><span class="eyebrow">Penerbitan</span><h2>Artikel Terkini QS-Link</h2><p>Penerbitan buletin tahunan LJBM.</p></div>
+      <a href="https://www.bqsm.gov.my/penerbitan/" class="link-arrow">Lihat Semua <i data-lucide="arrow-right" class="icon"></i></a>
+    </div>
+    <div class="pub-wrap">
+      <div class="pub-cover">
+        <div><span class="badge">BULETIN TAHUNAN</span><h3>QS-Link<br>Edisi 2025</h3><p>Himpunan artikel pilihan berkaitan amalan, teknologi dan kelestarian dalam profesion ukur bahan.</p></div>
+        <a href="https://www.bqsm.gov.my/penerbitan/" class="btn btn-yellow" style="align-self:flex-start;margin-top:28px;position:relative;z-index:2"><i data-lucide="book-open" class="icon"></i> Baca Buletin</a>
+      </div>
+      <div class="pub-list">
+        <a href="https://www.bqsm.gov.my/penerbitan/" class="pub-item"><span class="n">01</span><div><h4>Where Numbers Meet Design: Precision with Purpose in Architecture and Quantity Surveying</h4><span>QS-Link Edisi 2025</span></div></a>
+        <a href="https://www.bqsm.gov.my/penerbitan/" class="pub-item"><span class="n">02</span><div><h4>Built to Last: Integrity in Every Measure</h4><span>QS-Link Edisi 2025</span></div></a>
+        <a href="https://www.bqsm.gov.my/penerbitan/" class="pub-item"><span class="n">03</span><div><h4>QS with Purpose: Measuring What Truly Matters</h4><span>QS-Link Edisi 2025</span></div></a>
+        <a href="https://www.bqsm.gov.my/penerbitan/" class="pub-item"><span class="n">04</span><div><h4>Comparison of Engineering Properties between Pure Copper Slag Brick and Spent Copper Slag Brick</h4><span>QS-Link Edisi 2025</span></div></a>
+        <a href="https://www.bqsm.gov.my/penerbitan/" class="pub-item"><span class="n">05</span><div><h4>The Evolving Role of Quantity Surveyors in Sustainable Construction</h4><span>QS-Link Edisi 2025</span></div></a>
+        <a href="https://www.bqsm.gov.my/penerbitan/" class="pub-item"><span class="n">06</span><div><h4>The Role of Blockchain and Smart Contracts in Malaysian Construction Projects</h4><span>QS-Link Edisi 2025</span></div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RUJUKAN PANTAS ================= -->
+<section class="refs">
+  <div class="container">
+    <div><h2>Rujukan Pantas</h2><p>Dokumen dan panduan rasmi yang paling kerap dirujuk.</p></div>
+    <div class="ref-grid">
+      <a href="https://www.bqsm.gov.my/akta-juruukur-bahan/" class="ref"><i data-lucide="scale" class="icon"></i> Akta Juruukur Bahan</a>
+      <a href="https://www.bqsm.gov.my/pekeliling/" class="ref"><i data-lucide="file-text" class="icon"></i> Pekeliling LJBM</a>
+      <a href="https://www.bqsm.gov.my/garis-panduan/" class="ref"><i data-lucide="book-marked" class="icon"></i> Garis Panduan</a>
+      <a href="https://www.bqsm.gov.my/sof/" class="ref"><i data-lucide="calculator" class="icon"></i> Skala Fi (SOF)</a>
+      <a href="https://www.bqsm.gov.my/akreditasi/senarai-akreditasi-program-profesional/" class="ref"><i data-lucide="medal" class="icon"></i> Akreditasi</a>
+      <a href="https://www.bqsm.gov.my/borang-berkaitan/" class="ref"><i data-lucide="download" class="icon"></i> Borang Berkaitan</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PAUTAN LUAR ================= -->
+<section class="partners">
+  <div class="container">
+    <h3>Pautan Agensi &amp; Organisasi Berkaitan</h3>
+    <div class="logo-track"><div>
+      <a href="https://www.malaysia.gov.my/portal/index"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_1.png" alt="MyGovernment"></a>
+      <a href="https://mdec.my/"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_2.png" alt="MDEC"></a>
+      <a href="https://rism.org.my/"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_3.png" alt="RISM"></a>
+      <a href="https://www.kkr.gov.my/ms/jkr"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_4.png" alt="Jabatan Kerja Raya"></a>
+      <a href="https://lam.gov.my/"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_5.png" alt="Lembaga Arkitek Malaysia"></a>
+      <a href="http://bem.org.my/"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_6.png" alt="Board of Engineers Malaysia"></a>
+      <a href="https://www.cidb.gov.my/"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_7.png" alt="CIDB Malaysia"></a>
+      <a href="https://www.paqs.net/"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_8.png" alt="PAQS"></a>
+      <a href="https://www.rics.org/asean/"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_9.png" alt="RICS"></a>
+      <a href="https://malaysiabiz.gov.my/ms"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_10.png" alt="MalaysiaBiz"></a>
+      <!-- ulangan untuk animasi berterusan -->
+      <a href="https://www.malaysia.gov.my/portal/index"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_1.png" alt="MyGovernment"></a>
+      <a href="https://mdec.my/"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_2.png" alt="MDEC"></a>
+      <a href="https://rism.org.my/"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_3.png" alt="RISM"></a>
+      <a href="https://www.kkr.gov.my/ms/jkr"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_4.png" alt="Jabatan Kerja Raya"></a>
+      <a href="https://lam.gov.my/"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_5.png" alt="Lembaga Arkitek Malaysia"></a>
+      <a href="http://bem.org.my/"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_6.png" alt="Board of Engineers Malaysia"></a>
+      <a href="https://www.cidb.gov.my/"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_7.png" alt="CIDB Malaysia"></a>
+      <a href="https://www.paqs.net/"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_8.png" alt="PAQS"></a>
+      <a href="https://www.rics.org/asean/"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_9.png" alt="RICS"></a>
+      <a href="https://malaysiabiz.gov.my/ms"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/04/pl_10.png" alt="MalaysiaBiz"></a>
+    </div></div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container foot-grid">
+    <div>
+      <div class="foot-brand"><img src="https://www.bqsm.gov.my/wp-content/uploads/2022/06/cropped-logo_LJBM.png" alt="Logo LJBM"><strong>Lembaga Juruukur Bahan Malaysia</strong></div>
+      <ul class="contact">
+        <li><i data-lucide="map-pin" class="icon"></i><span>Aras 17, Blok F, Ibu Pejabat JKR, Jalan Sultan Salahuddin, 50582 Kuala Lumpur</span></li>
+        <li><i data-lucide="phone" class="icon"></i><span>603 – 2610 7809</span></li>
+        <li><i data-lucide="printer" class="icon"></i><span>603 – 2692 5680</span></li>
+        <li><i data-lucide="mail" class="icon"></i><span>info[at]bqsm.gov.my</span></li>
+      </ul>
+      <div class="social">
+        <a href="https://m.facebook.com/Board-of-Quantity-Surveyors-Malaysia-101242002694025/" aria-label="Facebook"><i data-lucide="facebook" class="icon"></i></a>
+        <a href="https://twitter.com/LJBMRasmi" aria-label="X / Twitter"><i data-lucide="twitter" class="icon"></i></a>
+        <a href="https://www.instagram.com/officialsitebqsm" aria-label="Instagram"><i data-lucide="instagram" class="icon"></i></a>
+        <a href="https://my.linkedin.com/in/lembaga-juruukur-bahan-malaysia-ljbm-640038194" aria-label="LinkedIn"><i data-lucide="linkedin" class="icon"></i></a>
+      </div>
+    </div>
+    <div class="foot-links">
+      <h4>Pautan Pantas</h4>
+      <a href="https://www.bqsm.gov.my/akta-juruukur-bahan/">Akta Juruukur Bahan</a>
+      <a href="https://www.bqsm.gov.my/senarai-akreditasi-program-profesional/">Akreditasi Yang Diiktiraf</a>
+      <a href="https://www.bqsm.gov.my/sof/">Skala Fi</a>
+      <a href="https://www.bqsm.gov.my/pekeliling/">Pekeliling LJBM</a>
+      <a href="https://www.bqsm.gov.my/penerbitan/">Buletin QS-Link</a>
+    </div>
+    <div class="foot-links">
+      <h4>Perkhidmatan</h4>
+      <a href="https://www.bqsm.gov.my/pendaftaran-apc/">Assessment of Professional Competence (APC)</a>
+      <a href="https://www.bqsm.gov.my/pendaftaran-baharu/">Pendaftaran Baharu</a>
+      <a href="https://www.bqsm.gov.my/pembaharuan-pendaftaran/">Pembaharuan Pendaftaran</a>
+      <a href="https://www.bqsm.gov.my/tender-sebut-harga/">Tender / Sebut Harga</a>
+      <a href="https://www.bqsm.gov.my/kerjaya/">Kerjaya</a>
+    </div>
+    <div>
+      <h4>Jumlah Pelawat</h4>
+      <div class="visitors">
+        <div><strong>0,000</strong><span>Hari Ini</span></div>
+        <div><strong>0,000</strong><span>Semalam</span></div>
+        <div><strong>00,000</strong><span>Bulan Ini</span></div>
+        <div><strong>000,000</strong><span>Keseluruhan</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="container">
+      <span>Hak Cipta © 2026 Lembaga Juruukur Bahan Malaysia. Hak Cipta Terpelihara.</span>
+      <nav>
+        <a href="https://www.bqsm.gov.my/penafian/">Penafian</a>
+        <a href="https://www.bqsm.gov.my/dasar-privasi-dan-keselamatan/">Dasar Privasi &amp; Keselamatan</a>
+        <a href="https://www.bqsm.gov.my/peta-laman/">Peta Laman</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  // Gambar gagal dimuat -> latar warna korporat (elak ruang kosong)
+  document.querySelectorAll('img').forEach(function(img){
+    img.addEventListener('error',function(){img.style.background='linear-gradient(135deg,#0A2A66,#123B86)';img.removeAttribute('src');});
+  });
+</script>
+</body>
+</html>
